@@ -12,10 +12,13 @@ namespace JoelHilton.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
+        private MovieContext MovieContext { get; set; }
 
-        public HomeController(ILogger<HomeController> logger)
+        //constructor
+        public HomeController(ILogger<HomeController> logger, MovieContext movieContext)
         {
             _logger = logger;
+            MovieContext = movieContext;
         }
 
         public IActionResult Index()
@@ -28,8 +31,18 @@ namespace JoelHilton.Controllers
             return View();
         }
 
+        [HttpGet]
         public IActionResult NewMovies()
         {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult NewMovies(MovieResponses mr)
+        {
+            MovieContext.Add(mr);
+            MovieContext.SaveChanges();
+
             return View();
         }
 
