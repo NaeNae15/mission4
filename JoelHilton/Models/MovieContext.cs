@@ -12,14 +12,65 @@ namespace JoelHilton.Models
         }
 
         public DbSet<MovieResponses> Responses { get; set; }
+        public DbSet<Category> Categories { get; set; }
+
+        //seeding the data
         protected override void OnModelCreating(ModelBuilder mb)
         {
+            mb.Entity<Category>().HasData(
+                new Category
+                {
+                    CategoryId = 1,
+                    CategoryName = "Action/Adeventure",
+                },
+                new Category
+                {
+                    CategoryId = 2,
+                    CategoryName = "Comedy"
+                },
+                new Category
+                {
+                    CategoryId = 3,
+                    CategoryName = "Drama"
+                },
+                new Category
+                {
+                    CategoryId = 4,
+                    CategoryName = "Family"
+                },
+                new Category
+                {
+                    CategoryId = 5,
+                    CategoryName = "Horror/Suspense"
+                },
+                new Category
+                {
+                    CategoryId = 6,
+                    CategoryName = "Miscellaneous"
+                },
+                new Category
+                {
+                    CategoryId = 7,
+                    CategoryName = "Television"
+                },
+                new Category
+                {
+                    CategoryId = 8,
+                    CategoryName = "VHS"
+                },
+                new Category
+                {
+                    CategoryId = 9,
+                    CategoryName = "Other"
+                }
+                );
+
             mb.Entity<MovieResponses>().HasData(
 
                 new MovieResponses
                 {
                     MovieId = 1,
-                    Category = "Action/Adventure",
+                    CategoryId = 1,
                     Title = "Avengers, The",
                     Year = 2012,
                     Director = "Joss Whedon",
@@ -32,7 +83,7 @@ namespace JoelHilton.Models
                 new MovieResponses
                 {
                     MovieId = 2,
-                    Category = "Comedy",
+                    CategoryId = 2,
                     Title = "Maverick",
                     Year = 1994,
                     Director = "Richard Donner",
@@ -45,7 +96,7 @@ namespace JoelHilton.Models
                 new MovieResponses
                 {
                     MovieId = 3,
-                    Category = "Comedy",
+                    CategoryId = 4,
                     Title = "Mrs. Doubtfire",
                     Year = 1993,
                     Director = "Chris Columbus",
@@ -59,7 +110,7 @@ namespace JoelHilton.Models
                 new MovieResponses
                 {
                     MovieId = 4,
-                    Category = "Action/Adventure",
+                    CategoryId = 1,
                     Title = "Ladyhawke",
                     Year = 1985,
                     Director = "Richard Donner",

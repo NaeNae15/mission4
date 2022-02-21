@@ -10,10 +10,7 @@ namespace JoelHilton.Models
         [Required]
         public int MovieId { get; set; }
 
-        [Required]
-        public string Category { get; set; }
-
-        [Required]
+        [Required(ErrorMessage = "Please include the title of the Movie.")]
         public string Title { get; set; }
 
         [Required]
@@ -32,5 +29,9 @@ namespace JoelHilton.Models
 
         public string Notes { get; set; }
 
+
+        [Required]
+        public int CategoryId { get; set; }
+        public Category Category { get; set; }
     }
 }
